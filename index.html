@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cow Launcher by Dev7studios</title>
+	<meta name="description" content="Flying cows, dynamite, trampolines... what more could you want in a game!" />
+
+	<link rel="stylesheet" href="site/style.css" media="screen" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+	<!--script type="text/javascript" src="lib/impact/impact.js"></script>
+	<script type="text/javascript" src="lib/game/main.js"></script-->
+
+	<script type="text/javascript" src="game.min.js?v1.1.0"></script>
+
+	<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+	<script type="text/javascript" src="https://cdn.firebase.com/js/simple-login/1.2.0/firebase-simple-login.js"></script>
+	<script>
+	var db = new Firebase('https://cowlauncher.firebaseio.com/scores');
+	db.limit(15).on('value', function(data) {
+		makeTopScoresList(data.val());
+	});
+
+	function makeTopScoresList(scores) {
+		var ul = $('#top-scores-list');
+		ul.html('');
+
+		reverseForIn(scores, function(key) {
+			ul.append('<li>'+ this[key].score +'m - '+ this[key].user.name +'</li>');
+		});
+	}
+
+	function reverseForIn(obj, f) {
+	  var arr = [];
+	  for (var key in obj) {
+	    // add hasOwnPropertyCheck if needed
+	    arr.push(key);
+	  }
+	  for (var i=arr.length-1; i>=0; i--) {
+	    f.call(obj, arr[i]);
+	  }
+	}
+	</script>
+
+	<!--meta name="apple-itunes-app" content="app-id=820365904"-->
+</head>
+<body>
+
+	<h1 class="header">Cow Launcher</h1>
+
+	<div class="iphone">
+		<canvas id="canvas"></canvas>
+	</div>
+
+	<!--div class="content cf">
+		<a href="https://itunes.apple.com/us/app/cow-launcher/id820365904"><img src="site/download.png" alt="" /></a>
+		<div id="scores">
+			<h3>Facebook Top Scores</h3>
+			<ol id="top-scores-list">
+				<li>Loading...</li>
+			</ol>
+			<span id="user-status">
+				<a href="#" class="login">Login</a> to save your scores.
+			</span>
+		</div>
+	</div-->
+
+	<div class="footer">
+		Copyright &copy; 2014 - <a href="https://dev7studios.co">Dev7studios</a>
+	</div>
+
+</body>
+</html>
