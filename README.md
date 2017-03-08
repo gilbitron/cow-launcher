@@ -11,6 +11,9 @@ and was available in the App Store for a while. The game is no longer available 
 App Store but I'm making it available as a desktop web game in the hope someone might
 get some enjoyment out of it again.
 
+I'm **not** planning to maintain this repo or make any changes or improvements to the game. It's
+here for posterity more than anything else.
+
 ## Credits
 
 Cow Launcher was created by [Gilbert Pellegrom](http://gilbert.pellegrom.me) from
